@@ -5,7 +5,7 @@ public class main {
 
     public static void main(String[] args) {
         
-        String db[][] = new String[1][17];
+        String db[][] = new String[25][17];
         String lista = " ";
         
         String mm[] = new String[7];
@@ -21,7 +21,7 @@ public class main {
         mmm[1] = "Nombre";
         
         //llenando los nombres de los alumnos para las primeras dos columnas
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < db.length; i++) {
             for (int j = 0; j < 1; j++) {
                  String nombre = JOptionPane.showInputDialog(null, "id No:"+i+" Ingrese Nombre del alumno "+i+" : ");
                  db[i][j] = nombre;
@@ -184,15 +184,15 @@ public class main {
                             JOptionPane.showMessageDialog(null, "Operacion No permitida, ingrese calificacion a P1, P2 & p3");
                         } else {
                             for (int i = 0; i < db.length; i++) {
-                                for (int j = 0; j < 17; j++) {
-                                    spFinal += db[i][j] + "      \t\t\t\t "+"  \t"+"   \t"+"    ";
+                                for (int j = 0; j < 16; j++) {
+                                    spFinal += db[i][j] + "      \t\t\t\t " + "  \t" + "   \t" + "    ";
                                     System.out.println("concatenando pos[" + i + "] ,[" + j + "]");
                                 }
                                 System.out.println("");
                                 spFinal += "\n";
                             }
-                            JOptionPane.showMessageDialog(null, "Nombre    Ingles    Calculo    P.O.O    Algebra    Promedio P1" +
-                                    "ingles   calculo   P.O.O   Algebra   PromedioP2   Ingles     Calculo     P.O.O     ALgebra     PromedioP3\n"+spFinal);
+                            JOptionPane.showMessageDialog(null, "Nombre        Ingles    Calculo    P.O.O    Algebra    Promedio P1" +
+                                    "\t\t             ingles   calculo   P.O.O   Algebra   PromedioP2   \t\t         Ingles     Calculo     P.O.O     ALgebra     PromedioP3    \n"+spFinal);
                         }
                         break;
                     case 0:
