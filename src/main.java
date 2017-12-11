@@ -2,8 +2,7 @@ import java.util.*;
 import javax.swing.JOptionPane;
 
 public class main {
-    
-   
+
     public static void main(String[] args) {
         
         String db[][] = new String[3][17];
@@ -12,11 +11,11 @@ public class main {
         String mm[] = new String[7];
         String mmm[] = new String[2];
         
-        mm[0] = "Ingles";
-        mm[1] = "Calculo";
-        mm[2] = "P.O.O";
-        mm[3] = "algebra";
-        mm[4] = "Promedio";
+        mm[1] = "Ingles";
+        mm[2] = "Calculo";
+        mm[3] = "P.O.O";
+        mm[4] = "algebra";
+        mm[5] = "Promedio";
         
         mmm[0] = "Id";
         mmm[1] = "Nombre";
@@ -26,8 +25,8 @@ public class main {
             for (int j = 0; j < 1; j++) {
                  String nombre = JOptionPane.showInputDialog(null, "id No:"+i+" Ingrese Nombre del alumno "+i+" : ");
                  db[i][j] = nombre;
-                 System.out.println(db[i][j]);
-                 lista +=i+"    " + db[i][j];
+                 System.out.println("i: "+i+" J: "+j);
+                 lista += db[i][j];
             }
             lista +="\n";
         }
@@ -39,48 +38,52 @@ public class main {
                 + "3 ingresar calificacion del tercer parcial\n"
                 + "4 resultados\n"
                 + "0 para salir del sistema.\n"));
-      
-        switch (op){
-            case 1:
-                String s = "";
-                JOptionPane.showInputDialog(null,lista);
-               
-                //for para el primer parcial
-                for (int i = 2; i < db.length; i++) {
-                    float sum = 0, p=0;
-                    int c= 0;
-                    int index = 0;
-                    for (int j  = 2 ; j < 6; j++) {
-                        if(j < 5){
-                            String cal = JOptionPane.showInputDialog(null,"alumno: "+db[0][index]
-                                    +"\nCalificacion para "+mm[j]);
-                             db [i][j] = cal;
-                             sum += Float.parseFloat(db[i][j]);
-                             c++;
-                             index ++;
-                        }else{
-                            p = sum /c;
-                            db[i][j] = String.valueOf(p);
-                        }    
+
+             switch (op){
+                 case 1:
+                     String s = "";
+                     JOptionPane.showInputDialog(null,lista);
+                     int index = 0;
+                     //for para el primer parcial
+                     for (int i = 0; i < db.length; i++) {
+                         float sum = 0, p=0;
+                         int c= 0;
+
+                         JOptionPane.showMessageDialog(null,"alumno: "+db[index][0]);
+                         for (int j  = 1 ; j < 6; j++) {
+                             System.out.println("pi-> i:"+i+" J: "+j);
+                             if(j < 5){
+                                 String cal = JOptionPane.showInputDialog(null,"\nCalificacion para "+mm[j]);
+                                 db [i][j] = cal;
+                                 sum += Float.parseFloat(db[i][j]);
+                                 c++;
+                             }else{
+                                 p = sum /c;
+                                 db[i][j] = String.valueOf(p);
+                             }
+                         }
+                         index ++;
+                     }// fin del for externo para ingresar calificacion
+
+                 for (int i = 0; i < 3; i++) {
+                    for (int j = 0; j < 6; j++) {
+                        s +=db[i][j]+"           ";
+                        System.out.println("concatenando pos["+i+"] ,["+j+"]");
                     }
-                }// fin del for externo para ingresar calificacion 
-                
-              /*  for (int i = 0; i < p1.length; i++) {
-                    for (int j = 0; j < p1.length; j++) {
-                        s +=" " + p1[i][j]+"           ";
-                    }
-                     s += i+" "+alumnos[i]+" "+"\n";
-                }*/
-                JOptionPane.showMessageDialog(null, mm[5]+"  "+mm[6] +" "+ mm[0]+"   "+mm[1]+"   "+mm[2]+"   "+mm[3]
-                        +"   "+mm[4]+"\n"+s);
-                
-                break;
-            case 4:
-               break;
-            case 0:
-                System.exit(0);
-                break;
-        }//fin del switch
+                     System.out.println("");
+                     s += "\n";
+                }
+                     JOptionPane.showMessageDialog(null, mmm[1] +"   "+ mm[1]+"   "+mm[2]+"   "+mm[3]+"   "+mm[4]
+                             +"   "+mm[5]+"\n"+s);
+
+                     break;
+                 case 4:
+                     break;
+                 case 0:
+                     System.exit(0);
+                     break;
+             }//fin del switch
+
         
        }//fin del while
       
