@@ -40,6 +40,7 @@ public class main {
                 + "0 para salir del sistema.\n"));
 
              switch (op){
+                 /*********************************************PRIMER PARCIAL*********************************************************/
                  case 1:
                      String s = "";
                      JOptionPane.showInputDialog(null,lista);
@@ -65,9 +66,10 @@ public class main {
                          index ++;
                      }// fin del for externo para ingresar calificacion
 
+                     //for para imprimir calificaciones
                  for (int i = 0; i < 3; i++) {
                     for (int j = 0; j < 6; j++) {
-                        s +=db[i][j]+"           ";
+                        s +="\t"+db[i][j]+"       \t    ";
                         System.out.println("concatenando pos["+i+"] ,["+j+"]");
                     }
                      System.out.println("");
@@ -75,7 +77,56 @@ public class main {
                 }
                      JOptionPane.showMessageDialog(null, mmm[1] +"   "+ mm[1]+"   "+mm[2]+"   "+mm[3]+"   "+mm[4]
                              +"   "+mm[5]+"\n"+s);
+                     break;
+                 /***********************************************SEGUNDO PARCIAL***********************************************************/
+                 case 2:
+                     if (db[0][1]==null){
+                         JOptionPane.showMessageDialog(null,"Calificaciones bloqueadas, ingrese primer parcial\n");
+                    }else{
+                         String sp2 = "";
+                         JOptionPane.showInputDialog(null,lista);
+                         int indexp2 = 0;
 
+
+                         //for para el segundo parcial
+                         for (int i = 0; i < db.length; i++) {
+                             float sum = 0, p=0;
+                             int c= 0;
+                             int mat = 1;
+
+                             JOptionPane.showMessageDialog(null,"alumno: "+db[indexp2][0]);
+                             for (int j  = 6 ; j < 11; j++) {
+                                 System.out.println("pi-> i:"+i+" J: "+j);
+                                 if(j < 10){
+                                     String cal = JOptionPane.showInputDialog(null,"\nCalificacion para "+mm[mat]);
+                                     System.out.println("ingresando calificacion en: ["+i+"],["+j+"]");
+                                     db [i][j] = cal;
+                                     sum += Float.parseFloat(db[i][j]);
+                                     c++;
+                                     mat++;
+                                 }else{
+                                     p = sum /c;
+                                     db[i][j] = String.valueOf(p);
+                                 }
+                             }
+                             indexp2 ++;
+                         }// fin del for externo para ingresar calificacion
+
+                         for (int i = 0; i < 3; i++) {
+                             for (int j = 0; j < 11; j++) {
+                                 if (j ==0 || j > 5) {
+                                     sp2 += db[i][j] + "           ";
+                                     System.out.println("concatenando pos[" + i + "] ,[" + j + "]");
+                                 }
+                             }
+                             System.out.println("");
+                             sp2 += "\n";
+                         }
+                         JOptionPane.showMessageDialog(null, mmm[1] +"   "+ mm[1]+"   "+mm[2]+"   "+mm[3]+"   "+mm[4]
+                                 +"   "+mm[5]+"\n"+sp2);
+                 }
+                     break;
+                 case 3:
                      break;
                  case 4:
                      break;
